@@ -18,6 +18,7 @@ void main()
     gl_Position = projection * view * model * vec4(aPos, 1.0);
     ourColor = aColor;
     TexCoord = aTexCoord;
+    //TexCoord = vec2(aTexCoord.x, 1.0 - aTexCoord.y);
 }
 
 //FRAGMENT
@@ -34,6 +35,12 @@ uniform float opacity;
 
 void main()
 {
-    vec4 texColor = texture(texture1, TexCoord);
-    vec4 texColor = texture(texture1, TexCoord);
+    //vec4 texColor = texture(texture1, TexCoord);
+    //FragColor = texColor * vec4(ourColor, opacity);
+
+    FragColor = texture(texture1, TexCoord);
+
+    //vec4 texColor = texture(texture1, TexCoord);
+    //vec3 modulatedColor = texColor.rgb * ourColor; // ourColor is white, so texColor is unchanged
+    //FragColor = vec4(modulatedColor, texColor.a); // Use texColor's alpha for transparency
 }
